@@ -1,0 +1,14 @@
+{
+  "name": "spritesmaker",
+  "version": "1.0.0",
+  "description": "Parametric aircraft & vessel sprite generator using Wikipedia specs",
+  "type": "module",
+  "main": "index.js",
+  "bin": { "spritesmaker": "./index.js" },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "sharp": "^0.33.0"
+  }
+}
