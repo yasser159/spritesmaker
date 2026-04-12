@@ -406,23 +406,30 @@ def align_model_for_topdown(imported, mesh_objects):
         verts = collect_world_vertices(mesh_objects)
         nb = compute_3d_bounds(verts)
 
-    # Detect nose: split along Y, compare X-spread of each half
-    # Nose end is narrower (pointier), tail end is wider (horizontal stabilizer)
-    mid_y = nb["cy"]
-    plus_y = [v for v in verts if v[1] > mid_y]
-    minus_y = [v for v in verts if v[1] <= mid_y]
+    # Detect nose: compare X-spread at the TIPS (10% of Y-extent), not full halves.
+    # Nose = tapers to a point (narrow tip). Tail = horizontal stabilizer (wide tip).
+    y_min = nb["min_y"]
+    y_max = nb["max_y"]
+    y_span = y_max - y_min
+    tip_depth = y_span * 0.10  # 10% tip strip
+
+    plus_y_tip = [v for v in verts if v[1] > y_max - tip_depth]
+    minus_y_tip = [v for v in verts if v[1] < y_min + tip_depth]
 
     def x_spread(vs):
         if len(vs) < 2: return 0
         xs = [v[0] for v in vs]
         return max(xs) - min(xs)
 
-    sp_plus = x_spread(plus_y)
-    sp_minus = x_spread(minus_y)
-    print(f"  [orient] nose check: +Y spread={sp_plus:.1f}, -Y spread={sp_minus:.1f}")
+    sp_plus = x_spread(plus_y_tip)
+    sp_minus = x_spread(minus_y_tip)
+    n_plus = len(plus_y_tip)
+    n_minus = len(minus_y_tip)
+    print(f"  [orient] tip check: +Y tip spread={sp_plus:.2f} ({n_plus}v), -Y tip spread={sp_minus:.2f} ({n_minus}v)")
 
-    # If +Y half is wider → nose is at -Y → flip 180°
-    if sp_plus > sp_minus * 1.05:
+    # Wider tip = tail (horizontal stabilizer). Narrower tip = nose.
+    # If +Y tip is wider → tail is at +Y → nose is at -Y → flip 180°
+    if sp_plus > sp_minus * 1.3:
         print(f"  [orient] flipping 180° — nose is at -Y")
         rot180 = (
             mathutils.Matrix.Translation((nb["cx"], nb["cy"], 0))
@@ -630,9 +637,9 @@ def render_png(output_path):
 
 def ensure_nose_north(imported, cx, cy, cam, output_path):
     """
-    Post-render validation: render a probe, check pixel-level nose-north.
-    The 3D alignment (align_model_for_topdown) already did the heavy lifting.
-    This is the final safety net — if it still fails, flip 180°.
+    Post-render validation: log pixel-level nose-north check but DO NOT override
+    the 3D vertex-based alignment. The 3D tip analysis is authoritative.
+    The pixel check is unreliable for jets (tail stabilizer has similar alpha to nose).
     """
     model_name = os.path.splitext(os.path.basename(output_path))[0].upper()
 
@@ -644,22 +651,12 @@ def ensure_nose_north(imported, cx, cy, cam, output_path):
         ok, top_a, bot_a = validate_nose_north(probe_path)
 
         if ok:
-            print(f"  [{model_name}] nose-north OK (top={top_a} bot={bot_a})")
-            return {"top": top_a, "bot": bot_a}
+            print(f"  [{model_name}] pixel check: nose-north OK (top={top_a} bot={bot_a})")
+        else:
+            # Log warning but do NOT flip — 3D vertex analysis is more reliable
+            print(f"  [{model_name}] pixel check: nose-south (top={top_a} bot={bot_a}) — trusting 3D alignment")
 
-        # 3D alignment got it wrong — flip 180° as safety net
-        print(f"  [{model_name}] nose-south after 3D align (top={top_a} bot={bot_a}), flipping 180°")
-        rotate_objects_around_center(imported, math.radians(180), cx, cy)
-
-        render_png(probe_path)
-        ok2, top_a2, bot_a2 = validate_nose_north(probe_path)
-
-        if ok2:
-            return {"flipped": True, "top": top_a2, "bot": bot_a2}
-
-        print(f"  [{model_name}] WARNING: nose-north check inconclusive (top={top_a2} bot={bot_a2})")
-        # Accept it anyway — 3D alignment is more trustworthy than pixel heuristic
-        return {"uncertain": True, "top": top_a2, "bot": bot_a2}
+        return {"top": top_a, "bot": bot_a, "pixel_ok": ok}
     finally:
         try:
             os.remove(probe_path)
