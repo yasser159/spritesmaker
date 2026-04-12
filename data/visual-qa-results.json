@@ -1,0 +1,834 @@
+{
+  "config": {
+    "ambiguous_margin": 0.05,
+    "approve_threshold": 0.7,
+    "approved_dir_name": "approved",
+    "cache_path": "/Users/yasser159/code/devtools/QA/Local_Validation_LLMs/.sprite_qc_cache/cache.json",
+    "caption_keyword_threshold": 0.5,
+    "caption_keyword_weight": 0.2,
+    "class_similarity_threshold": 0.25,
+    "class_similarity_weight": 0.45,
+    "default_metadata_suffix": ".json",
+    "duplicate_embedding_threshold": 0.985,
+    "duplicate_penalty_weight": 0.1,
+    "duplicate_phash_distance": 4,
+    "log_backup_count": 3,
+    "log_max_bytes": 1000000,
+    "log_memory_events": 500,
+    "log_path": "/Users/yasser159/code/devtools/QA/Local_Validation_LLMs/logs/sprite_qc.log",
+    "max_alpha_coverage": 0.98,
+    "max_height": 4096,
+    "max_width": 4096,
+    "min_alpha_coverage": 0.01,
+    "min_height": 16,
+    "min_width": 16,
+    "reject_threshold": 0.35,
+    "rejected_dir_name": "rejected",
+    "review_dir_name": "review",
+    "style_similarity_threshold": 0.4,
+    "style_similarity_weight": 0.25
+  },
+  "results": [
+    {
+      "caption": "",
+      "components": {
+        "caption_keyword_score": 1.0,
+        "class_similarity": 0.2836305499076843,
+        "duplicate_score": 0.6605429115571871,
+        "style_similarity": 0.5510316966589326
+      },
+      "decision": "needs_review",
+      "duplicate": {
+        "is_duplicate": false,
+        "match_id": "B752",
+        "reason": null,
+        "score": 0.6605429115571871
+      },
+      "final_score": 0.3993373804674724,
+      "id": "contact-sheet",
+      "image_path": "/Users/yasser159/code/Gaming/SpritesMaker/output/contact-sheet.png",
+      "llava_reason": null,
+      "metadata": {},
+      "precheck": {
+        "alpha_coverage": 1.0,
+        "height": 762,
+        "passed": true,
+        "reasons": [],
+        "warnings": [
+          "alpha_coverage_high"
+        ],
+        "width": 1362
+      },
+      "reasons": [],
+      "warnings": [
+        "alpha_coverage_high"
+      ],
+      "yolo_parts": null
+    },
+    {
+      "caption": "",
+      "components": {
+        "caption_keyword_score": 1.0,
+        "class_similarity": 0.32252395153045654,
+        "duplicate_score": 0.9350559845516135,
+        "style_similarity": 0.7923312660470968
+      },
+      "decision": "needs_review",
+      "duplicate": {
+        "is_duplicate": false,
+        "match_id": "B737",
+        "reason": null,
+        "score": 0.9350559845516135
+      },
+      "final_score": 0.44971299624531835,
+      "id": "rejected__A319",
+      "image_path": "/Users/yasser159/code/Gaming/SpritesMaker/output/rejected/A319.png",
+      "llava_reason": null,
+      "metadata": {},
+      "precheck": {
+        "alpha_coverage": 0.18463134765625,
+        "height": 128,
+        "passed": true,
+        "reasons": [],
+        "warnings": [],
+        "width": 128
+      },
+      "reasons": [],
+      "warnings": [],
+      "yolo_parts": null
+    },
+    {
+      "caption": "",
+      "components": {
+        "caption_keyword_score": 1.0,
+        "class_similarity": 0.27246493101119995,
+        "duplicate_score": 0.7603666164032118,
+        "style_similarity": 0.6468993169137607
+      },
+      "decision": "needs_review",
+      "duplicate": {
+        "is_duplicate": false,
+        "match_id": "B350",
+        "reason": null,
+        "score": 0.7603666164032118
+      },
+      "final_score": 0.408297386543159,
+      "id": "rejected__A320",
+      "image_path": "/Users/yasser159/code/Gaming/SpritesMaker/output/rejected/A320.png",
+      "llava_reason": null,
+      "metadata": {},
+      "precheck": {
+        "alpha_coverage": 0.03857421875,
+        "height": 128,
+        "passed": true,
+        "reasons": [],
+        "warnings": [],
+        "width": 128
+      },
+      "reasons": [],
+      "warnings": [],
+      "yolo_parts": null
+    },
+    {
+      "caption": "",
+      "components": {
+        "caption_keyword_score": 1.0,
+        "class_similarity": 0.19081950187683105,
+        "duplicate_score": 0.7343420829090201,
+        "style_similarity": 0.48529625925571707
+      },
+      "decision": "reject",
+      "duplicate": {
+        "is_duplicate": false,
+        "match_id": "VESSEL_TANKER",
+        "reason": null,
+        "score": 0.7343420829090201
+      },
+      "final_score": 0.3337586323676012,
+      "id": "rejected__AT45",
+      "image_path": "/Users/yasser159/code/Gaming/SpritesMaker/output/rejected/AT45.png",
+      "llava_reason": null,
+      "metadata": {},
+      "precheck": {
+        "alpha_coverage": 0.36767578125,
+        "height": 128,
+        "passed": true,
+        "reasons": [],
+        "warnings": [],
+        "width": 128
+      },
+      "reasons": [
+        "class_similarity_below_threshold"
+      ],
+      "warnings": [],
+      "yolo_parts": null
+    },
+    {
+      "caption": "",
+      "components": {
+        "caption_keyword_score": 1.0,
+        "class_similarity": 0.30891257524490356,
+        "duplicate_score": 1.0,
+        "style_similarity": 0.7887434026592568
+      },
+      "decision": "reject",
+      "duplicate": {
+        "is_duplicate": true,
+        "match_id": "B350",
+        "reason": "embedding_and_phash_match",
+        "score": 1.0
+      },
+      "final_score": 0.43619650952502076,
+      "id": "rejected__B350",
+      "image_path": "/Users/yasser159/code/Gaming/SpritesMaker/output/rejected/B350.png",
+      "llava_reason": null,
+      "metadata": {},
+      "precheck": {
+        "alpha_coverage": 0.14691162109375,
+        "height": 128,
+        "passed": true,
+        "reasons": [],
+        "warnings": [],
+        "width": 128
+      },
+      "reasons": [
+        "duplicate_detected:embedding_and_phash_match"
+      ],
+      "warnings": [],
+      "yolo_parts": null
+    },
+    {
+      "caption": "",
+      "components": {
+        "caption_keyword_score": 1.0,
+        "class_similarity": 0.20072025060653687,
+        "duplicate_score": 0.6693758762213758,
+        "style_similarity": 0.5812052710858655
+      },
+      "decision": "needs_review",
+      "duplicate": {
+        "is_duplicate": false,
+        "match_id": "B773",
+        "reason": null,
+        "score": 0.6693758762213758
+      },
+      "final_score": 0.3686878429222704,
+      "id": "rejected__B407",
+      "image_path": "/Users/yasser159/code/Gaming/SpritesMaker/output/rejected/B407.png",
+      "llava_reason": null,
+      "metadata": {},
+      "precheck": {
+        "alpha_coverage": 0.08404541015625,
+        "height": 128,
+        "passed": true,
+        "reasons": [],
+        "warnings": [],
+        "width": 128
+      },
+      "reasons": [
+        "class_similarity_below_threshold"
+      ],
+      "warnings": [],
+      "yolo_parts": null
+    },
+    {
+      "caption": "",
+      "components": {
+        "caption_keyword_score": 1.0,
+        "class_similarity": 0.2701171636581421,
+        "duplicate_score": 0.8519506620656001,
+        "style_similarity": 0.7065547739552078
+      },
+      "decision": "needs_review",
+      "duplicate": {
+        "is_duplicate": false,
+        "match_id": "B78X",
+        "reason": null,
+        "score": 0.8519506620656001
+      },
+      "final_score": 0.41299635092840586,
+      "id": "rejected__B788",
+      "image_path": "/Users/yasser159/code/Gaming/SpritesMaker/output/rejected/B788.png",
+      "llava_reason": null,
+      "metadata": {},
+      "precheck": {
+        "alpha_coverage": 0.68511962890625,
+        "height": 128,
+        "passed": true,
+        "reasons": [],
+        "warnings": [],
+        "width": 128
+      },
+      "reasons": [],
+      "warnings": [],
+      "yolo_parts": null
+    },
+    {
+      "caption": "",
+      "components": {
+        "caption_keyword_score": 1.0,
+        "class_similarity": 0.32625365257263184,
+        "duplicate_score": 0.9312990879709914,
+        "style_similarity": 0.8178662754682592
+      },
+      "decision": "needs_review",
+      "duplicate": {
+        "is_duplicate": false,
+        "match_id": "B744",
+        "reason": null,
+        "score": 0.9312990879709914
+      },
+      "final_score": 0.45815080372765005,
+      "id": "rejected__C17",
+      "image_path": "/Users/yasser159/code/Gaming/SpritesMaker/output/rejected/C17.png",
+      "llava_reason": null,
+      "metadata": {},
+      "precheck": {
+        "alpha_coverage": 0.20562744140625,
+        "height": 128,
+        "passed": true,
+        "reasons": [],
+        "warnings": [],
+        "width": 128
+      },
+      "reasons": [],
+      "warnings": [],
+      "yolo_parts": null
+    },
+    {
+      "caption": "",
+      "components": {
+        "caption_keyword_score": 1.0,
+        "class_similarity": 0.3233945369720459,
+        "duplicate_score": 0.8242932885453116,
+        "style_similarity": 0.6890484736213656
+      },
+      "decision": "needs_review",
+      "duplicate": {
+        "is_duplicate": false,
+        "match_id": "B350",
+        "reason": null,
+        "score": 0.8242932885453116
+      },
+      "final_score": 0.4353603311882309,
+      "id": "rejected__C172",
+      "image_path": "/Users/yasser159/code/Gaming/SpritesMaker/output/rejected/C172.png",
+      "llava_reason": null,
+      "metadata": {},
+      "precheck": {
+        "alpha_coverage": 0.158447265625,
+        "height": 128,
+        "passed": true,
+        "reasons": [],
+        "warnings": [],
+        "width": 128
+      },
+      "reasons": [],
+      "warnings": [],
+      "yolo_parts": null
+    },
+    {
+      "caption": "",
+      "components": {
+        "caption_keyword_score": 1.0,
+        "class_similarity": 0.29355424642562866,
+        "duplicate_score": 0.8428128628253061,
+        "style_similarity": 0.750781202907097
+      },
+      "decision": "needs_review",
+      "duplicate": {
+        "is_duplicate": false,
+        "match_id": "B78X",
+        "reason": null,
+        "score": 0.8428128628253061
+      },
+      "final_score": 0.43551342533577664,
+      "id": "rejected__C182",
+      "image_path": "/Users/yasser159/code/Gaming/SpritesMaker/output/rejected/C182.png",
+      "llava_reason": null,
+      "metadata": {},
+      "precheck": {
+        "alpha_coverage": 0.15960693359375,
+        "height": 128,
+        "passed": true,
+        "reasons": [],
+        "warnings": [],
+        "width": 128
+      },
+      "reasons": [],
+      "warnings": [],
+      "yolo_parts": null
+    },
+    {
+      "caption": "",
+      "components": {
+        "caption_keyword_score": 1.0,
+        "class_similarity": 0.3191322088241577,
+        "duplicate_score": 0.8754065717194885,
+        "style_similarity": 0.7598918876779193
+      },
+      "decision": "needs_review",
+      "duplicate": {
+        "is_duplicate": false,
+        "match_id": "LJ45",
+        "reason": null,
+        "score": 0.8754065717194885
+      },
+      "final_score": 0.4460418087184019,
+      "id": "rejected__C208",
+      "image_path": "/Users/yasser159/code/Gaming/SpritesMaker/output/rejected/C208.png",
+      "llava_reason": null,
+      "metadata": {},
+      "precheck": {
+        "alpha_coverage": 0.1533203125,
+        "height": 128,
+        "passed": true,
+        "reasons": [],
+        "warnings": [],
+        "width": 128
+      },
+      "reasons": [],
+      "warnings": [],
+      "yolo_parts": null
+    },
+    {
+      "caption": "",
+      "components": {
+        "caption_keyword_score": 1.0,
+        "class_similarity": 0.29530462622642517,
+        "duplicate_score": 0.7904650260357113,
+        "style_similarity": 0.7094430364338519
+      },
+      "decision": "needs_review",
+      "duplicate": {
+        "is_duplicate": false,
+        "match_id": "B739",
+        "reason": null,
+        "score": 0.7904650260357113
+      },
+      "final_score": 0.4312013383067832,
+      "id": "rejected__CRJ7",
+      "image_path": "/Users/yasser159/code/Gaming/SpritesMaker/output/rejected/CRJ7.png",
+      "llava_reason": null,
+      "metadata": {},
+      "precheck": {
+        "alpha_coverage": 0.18682861328125,
+        "height": 128,
+        "passed": true,
+        "reasons": [],
+        "warnings": [],
+        "width": 128
+      },
+      "reasons": [],
+      "warnings": [],
+      "yolo_parts": null
+    },
+    {
+      "caption": null,
+      "components": {
+        "precheck": 0.0
+      },
+      "decision": "reject",
+      "duplicate": {
+        "is_duplicate": false,
+        "match_id": null,
+        "reason": null,
+        "score": 0.0
+      },
+      "final_score": 0.0,
+      "id": "rejected__EC35",
+      "image_path": "/Users/yasser159/code/Gaming/SpritesMaker/output/rejected/EC35.png",
+      "llava_reason": null,
+      "metadata": {},
+      "precheck": {
+        "alpha_coverage": 0.001708984375,
+        "height": 128,
+        "passed": false,
+        "reasons": [
+          "alpha_coverage_too_low"
+        ],
+        "warnings": [],
+        "width": 128
+      },
+      "reasons": [
+        "alpha_coverage_too_low"
+      ],
+      "warnings": [],
+      "yolo_parts": null
+    },
+    {
+      "caption": "",
+      "components": {
+        "caption_keyword_score": 1.0,
+        "class_similarity": 0.2932355999946594,
+        "duplicate_score": 0.9587410138251738,
+        "style_similarity": 0.8131091968514198
+      },
+      "decision": "needs_review",
+      "duplicate": {
+        "is_duplicate": false,
+        "match_id": "C56X",
+        "reason": null,
+        "score": 0.9587410138251738
+      },
+      "final_score": 0.4393592178279343,
+      "id": "rejected__GLF5",
+      "image_path": "/Users/yasser159/code/Gaming/SpritesMaker/output/rejected/GLF5.png",
+      "llava_reason": null,
+      "metadata": {},
+      "precheck": {
+        "alpha_coverage": 0.1795654296875,
+        "height": 128,
+        "passed": true,
+        "reasons": [],
+        "warnings": [],
+        "width": 128
+      },
+      "reasons": [],
+      "warnings": [],
+      "yolo_parts": null
+    },
+    {
+      "caption": "",
+      "components": {
+        "caption_keyword_score": 1.0,
+        "class_similarity": 0.27006077766418457,
+        "duplicate_score": 0.6845556391765455,
+        "style_similarity": 0.5692787871711065
+      },
+      "decision": "needs_review",
+      "duplicate": {
+        "is_duplicate": false,
+        "match_id": "A321",
+        "reason": null,
+        "score": 0.6845556391765455
+      },
+      "final_score": 0.39539148282400516,
+      "id": "rejected__MD80",
+      "image_path": "/Users/yasser159/code/Gaming/SpritesMaker/output/rejected/MD80.png",
+      "llava_reason": null,
+      "metadata": {},
+      "precheck": {
+        "alpha_coverage": 0.07427978515625,
+        "height": 128,
+        "passed": true,
+        "reasons": [],
+        "warnings": [],
+        "width": 128
+      },
+      "reasons": [],
+      "warnings": [],
+      "yolo_parts": null
+    },
+    {
+      "caption": "",
+      "components": {
+        "caption_keyword_score": 1.0,
+        "class_similarity": 0.24296168982982635,
+        "duplicate_score": 0.7398903347855189,
+        "style_similarity": 0.5616130720774487
+      },
+      "decision": "needs_review",
+      "duplicate": {
+        "is_duplicate": false,
+        "match_id": "DHC6",
+        "reason": null,
+        "score": 0.7398903347855189
+      },
+      "final_score": 0.37574699496423214,
+      "id": "rejected__R44",
+      "image_path": "/Users/yasser159/code/Gaming/SpritesMaker/output/rejected/R44.png",
+      "llava_reason": null,
+      "metadata": {},
+      "precheck": {
+        "alpha_coverage": 0.0328369140625,
+        "height": 128,
+        "passed": true,
+        "reasons": [],
+        "warnings": [],
+        "width": 128
+      },
+      "reasons": [
+        "class_similarity_below_threshold"
+      ],
+      "warnings": [],
+      "yolo_parts": null
+    },
+    {
+      "caption": "",
+      "components": {
+        "caption_keyword_score": 1.0,
+        "class_similarity": 0.31803441047668457,
+        "duplicate_score": 0.8677925152580401,
+        "style_similarity": 0.7692961711064484
+      },
+      "decision": "needs_review",
+      "duplicate": {
+        "is_duplicate": false,
+        "match_id": "B350",
+        "reason": null,
+        "score": 0.8677925152580401
+      },
+      "final_score": 0.4486602759653161,
+      "id": "rejected__SR22",
+      "image_path": "/Users/yasser159/code/Gaming/SpritesMaker/output/rejected/SR22.png",
+      "llava_reason": null,
+      "metadata": {},
+      "precheck": {
+        "alpha_coverage": 0.1279296875,
+        "height": 128,
+        "passed": true,
+        "reasons": [],
+        "warnings": [],
+        "width": 128
+      },
+      "reasons": [],
+      "warnings": [],
+      "yolo_parts": null
+    },
+    {
+      "caption": "",
+      "components": {
+        "caption_keyword_score": 1.0,
+        "class_similarity": 0.17711322009563446,
+        "duplicate_score": 0.571161761357575,
+        "style_similarity": 0.4769494990823052
+      },
+      "decision": "reject",
+      "duplicate": {
+        "is_duplicate": false,
+        "match_id": "VESSEL_TANKER",
+        "reason": null,
+        "score": 0.571161761357575
+      },
+      "final_score": 0.34182214767785435,
+      "id": "rejected__VESSEL_CARGO",
+      "image_path": "/Users/yasser159/code/Gaming/SpritesMaker/output/rejected/VESSEL_CARGO.png",
+      "llava_reason": null,
+      "metadata": {},
+      "precheck": {
+        "alpha_coverage": 0.63043212890625,
+        "height": 128,
+        "passed": true,
+        "reasons": [],
+        "warnings": [],
+        "width": 128
+      },
+      "reasons": [
+        "class_similarity_below_threshold"
+      ],
+      "warnings": [],
+      "yolo_parts": null
+    },
+    {
+      "caption": "",
+      "components": {
+        "caption_keyword_score": 1.0,
+        "class_similarity": 0.23136237263679504,
+        "duplicate_score": 0.7770018583406295,
+        "style_similarity": 0.5791859003216389
+      },
+      "decision": "needs_review",
+      "duplicate": {
+        "is_duplicate": false,
+        "match_id": "VESSEL_TANKER",
+        "reason": null,
+        "score": 0.7770018583406295
+      },
+      "final_score": 0.3712093569329045,
+      "id": "rejected__VESSEL_CRUISE",
+      "image_path": "/Users/yasser159/code/Gaming/SpritesMaker/output/rejected/VESSEL_CRUISE.png",
+      "llava_reason": null,
+      "metadata": {},
+      "precheck": {
+        "alpha_coverage": 0.093505859375,
+        "height": 128,
+        "passed": true,
+        "reasons": [],
+        "warnings": [],
+        "width": 128
+      },
+      "reasons": [
+        "class_similarity_below_threshold"
+      ],
+      "warnings": [],
+      "yolo_parts": null
+    },
+    {
+      "caption": "",
+      "components": {
+        "caption_keyword_score": 1.0,
+        "class_similarity": 0.16073179244995117,
+        "duplicate_score": 0.638026055663398,
+        "style_similarity": 0.5571915022861561
+      },
+      "decision": "reject",
+      "duplicate": {
+        "is_duplicate": false,
+        "match_id": "F18S",
+        "reason": null,
+        "score": 0.638026055663398
+      },
+      "final_score": 0.34782457660767724,
+      "id": "rejected__VESSEL_DESTROYER",
+      "image_path": "/Users/yasser159/code/Gaming/SpritesMaker/output/rejected/VESSEL_DESTROYER.png",
+      "llava_reason": null,
+      "metadata": {},
+      "precheck": {
+        "alpha_coverage": 0.10260009765625,
+        "height": 128,
+        "passed": true,
+        "reasons": [],
+        "warnings": [],
+        "width": 128
+      },
+      "reasons": [
+        "class_similarity_below_threshold"
+      ],
+      "warnings": [],
+      "yolo_parts": null
+    },
+    {
+      "caption": "",
+      "components": {
+        "caption_keyword_score": 1.0,
+        "class_similarity": 0.25365185737609863,
+        "duplicate_score": 0.7811350345809044,
+        "style_similarity": 0.539936981484392
+      },
+      "decision": "needs_review",
+      "duplicate": {
+        "is_duplicate": false,
+        "match_id": "VESSEL_PT",
+        "reason": null,
+        "score": 0.7811350345809044
+      },
+      "final_score": 0.371014077732252,
+      "id": "rejected__VESSEL_PATROL",
+      "image_path": "/Users/yasser159/code/Gaming/SpritesMaker/output/rejected/VESSEL_PATROL.png",
+      "llava_reason": null,
+      "metadata": {},
+      "precheck": {
+        "alpha_coverage": 0.23394775390625,
+        "height": 128,
+        "passed": true,
+        "reasons": [],
+        "warnings": [],
+        "width": 128
+      },
+      "reasons": [],
+      "warnings": [],
+      "yolo_parts": null
+    },
+    {
+      "caption": "",
+      "components": {
+        "caption_keyword_score": 1.0,
+        "class_similarity": 0.23939329385757446,
+        "duplicate_score": 0.5813406729868291,
+        "style_similarity": 0.42065039514703456
+      },
+      "decision": "needs_review",
+      "duplicate": {
+        "is_duplicate": false,
+        "match_id": "VESSEL_FISHING",
+        "reason": null,
+        "score": 0.5813406729868291
+      },
+      "final_score": 0.35475551372398423,
+      "id": "rejected__VESSEL_TUG",
+      "image_path": "/Users/yasser159/code/Gaming/SpritesMaker/output/rejected/VESSEL_TUG.png",
+      "llava_reason": null,
+      "metadata": {},
+      "precheck": {
+        "alpha_coverage": 0.3837890625,
+        "height": 128,
+        "passed": true,
+        "reasons": [],
+        "warnings": [],
+        "width": 128
+      },
+      "reasons": [
+        "class_similarity_below_threshold"
+      ],
+      "warnings": [],
+      "yolo_parts": null
+    },
+    {
+      "caption": "",
+      "components": {
+        "caption_keyword_score": 1.0,
+        "class_similarity": 0.22439762949943542,
+        "duplicate_score": 0.6730973351671906,
+        "style_similarity": 0.6031979825567079
+      },
+      "decision": "needs_review",
+      "duplicate": {
+        "is_duplicate": false,
+        "match_id": "PA28",
+        "reason": null,
+        "score": 0.6730973351671906
+      },
+      "final_score": 0.38446869539720385,
+      "id": "rejected__VESSEL_YACHT",
+      "image_path": "/Users/yasser159/code/Gaming/SpritesMaker/output/rejected/VESSEL_YACHT.png",
+      "llava_reason": null,
+      "metadata": {},
+      "precheck": {
+        "alpha_coverage": 0.20037841796875,
+        "height": 128,
+        "passed": true,
+        "reasons": [],
+        "warnings": [],
+        "width": 128
+      },
+      "reasons": [
+        "class_similarity_below_threshold"
+      ],
+      "warnings": [],
+      "yolo_parts": null
+    },
+    {
+      "caption": "",
+      "components": {
+        "caption_keyword_score": 1.0,
+        "class_similarity": 0.2858867645263672,
+        "duplicate_score": 0.9310544045049,
+        "style_similarity": 0.7857014213961487
+      },
+      "decision": "needs_review",
+      "duplicate": {
+        "is_duplicate": false,
+        "match_id": "B78X",
+        "reason": null,
+        "score": 0.9310544045049
+      },
+      "final_score": 0.4319689589354124,
+      "id": "review__A35K",
+      "image_path": "/Users/yasser159/code/Gaming/SpritesMaker/output/review/A35K.png",
+      "llava_reason": null,
+      "metadata": {},
+      "precheck": {
+        "alpha_coverage": 0.03607177734375,
+        "height": 128,
+        "passed": true,
+        "reasons": [],
+        "warnings": [],
+        "width": 128
+      },
+      "reasons": [],
+      "warnings": [],
+      "yolo_parts": null
+    }
+  ],
+  "summary": {
+    "average_score": 0.3865615043693695,
+    "counts": {
+      "needs_review": 19,
+      "pass": 0,
+      "reject": 5
+    },
+    "routed": {},
+    "total": 24
+  }
+}

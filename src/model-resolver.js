@@ -110,6 +110,71 @@ async function downloadSketchfabModel(uid, icao, token) {
   return finalPath;
 }
 
+const OLLAMA_URL = 'http://localhost:11434/api/generate';
+const QWEN_MODEL = 'qwen3:14b';
+
+/**
+ * Ask local Qwen LLM for better Sketchfab search queries given an ICAO code.
+ * Returns array of query strings.
+ */
+async function llmSearchQueries(icao, name) {
+  try {
+    const prompt = `You are an aviation/vessel expert. Given the identifier "${icao}"${name ? ` (${name})` : ''}, generate 3 Sketchfab search queries to find a downloadable 3D model of this exact aircraft or vessel. Include the full manufacturer name and model designation. Return ONLY the queries, one per line, no numbering, no explanation. Do NOT use /no_think or any tags.`;
+    const resp = await fetch(OLLAMA_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model: QWEN_MODEL, prompt, stream: false }),
+    });
+    if (!resp.ok) return [];
+    const data = await resp.json();
+    const lines = (data.response || '')
+      .split('\n')
+      .map(l => l.trim())
+      .filter(l => l.length > 3 && !l.startsWith('<') && !l.startsWith('#'));
+    console.log(`  [qwen] Generated ${lines.length} search queries`);
+    return lines.slice(0, 5);
+  } catch (e) {
+    console.log(`  [qwen] Offline or error: ${e.message}`);
+    return [];
+  }
+}
+
+/**
+ * Ask local Qwen LLM to pick the best Sketchfab result for an ICAO code.
+ * Returns the index of the best match (0-based) or -1 if none match.
+ */
+async function llmValidateResults(icao, name, results) {
+  if (results.length === 0) return -1;
+  if (results.length === 1) return 0;
+
+  try {
+    const options = results.map((r, i) => `${i}: "${r.name}" (${r.likes} likes)`).join('\n');
+    const prompt = `You are an aviation/vessel 3D model expert. I'm looking for a 3D model of "${name || icao}" (code: ${icao}).
+
+Which of these Sketchfab results is the best match? Consider: correct aircraft/vessel type, exterior model (not interior), and quality (likes).
+
+${options}
+
+Reply with ONLY the number (0-${results.length - 1}) of the best match, or -1 if none match. Just the number, nothing else. Do NOT use /no_think or any tags.`;
+
+    const resp = await fetch(OLLAMA_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model: QWEN_MODEL, prompt, stream: false }),
+    });
+    if (!resp.ok) return 0;
+    const data = await resp.json();
+    const num = parseInt((data.response || '').trim(), 10);
+    if (Number.isFinite(num) && num >= -1 && num < results.length) {
+      console.log(`  [qwen] Selected result ${num}: "${results[Math.max(0, num)]?.name}"`);
+      return num;
+    }
+    return 0;
+  } catch {
+    return 0;
+  }
+}
+
 /**
  * Search Sketchfab for a model matching the aircraft name.
  */
@@ -193,16 +258,42 @@ export async function resolveModel(icaoCode, specs = {}) {
   try {
     const results = await searchSketchfab(query, token);
     if (results.length > 0) {
-      const best = results[0];
-      console.log(`  [sketchfab] Found: "${best.name}" (${best.likes} likes)`);
-      const path = await downloadSketchfabModel(best.uid, icao, token);
-      return { modelPath: path, source: 'sketchfab-search' };
+      // Use Qwen to pick the best result if multiple options
+      const bestIdx = await llmValidateResults(icao, name, results);
+      if (bestIdx >= 0) {
+        const best = results[bestIdx];
+        console.log(`  [sketchfab] Found: "${best.name}" (${best.likes} likes)`);
+        const path = await downloadSketchfabModel(best.uid, icao, token);
+        return { modelPath: path, source: 'sketchfab-search' };
+      }
+      console.log(`  [qwen] Rejected all Sketchfab results as poor matches`);
     }
   } catch (e) {
     console.log(`  [model] Sketchfab search failed: ${e.message}`);
   }
 
-  // Step 4: Category fallback
+  // Step 4: LLM-assisted search — ask Qwen for better queries
+  console.log(`  [model] Trying LLM-assisted search...`);
+  const llmQueries = await llmSearchQueries(icao, name);
+  for (const q of llmQueries) {
+    try {
+      console.log(`  [qwen] Searching: "${q}"`);
+      const results = await searchSketchfab(q, token);
+      if (results.length > 0) {
+        const bestIdx = await llmValidateResults(icao, name, results);
+        if (bestIdx >= 0) {
+          const best = results[bestIdx];
+          console.log(`  [sketchfab] LLM-assisted find: "${best.name}" (${best.likes} likes)`);
+          const path = await downloadSketchfabModel(best.uid, icao, token);
+          return { modelPath: path, source: 'sketchfab-llm' };
+        }
+      }
+    } catch (e) {
+      console.log(`  [model] LLM search "${q}" failed: ${e.message}`);
+    }
+  }
+
+  // Step 5: Category fallback
   return resolveDefault(specs.category);
 }
 

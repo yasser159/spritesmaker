@@ -1,4 +1,4 @@
-import { mkdirSync, existsSync } from 'fs';
+import { mkdirSync, existsSync, readFileSync } from 'fs';
 import { join, resolve } from 'path';
 import { classify, classifyAll, getAllCodesForCategory } from './classify.js';
 import { fetchSpecs } from './fetch-specs.js';
@@ -8,6 +8,7 @@ import { resolveModel } from './model-resolver.js';
 import { render3d } from './render-3d.js';
 import { scoreSprite, scoreAll, approve, reject } from './qa.js';
 import { generateContactSheet } from './contact-sheet.js';
+import { deploy } from './deploy.js';
 
 const OUTPUT_DIR = resolve('./output');
 
@@ -30,11 +31,13 @@ Usage:
                                          Find types without sprites and generate them
   spritesmaker render <ICAO>             Download 3D model + Blender render (best quality)
   spritesmaker render-batch --top <N>    Render top N most common types via Blender
+  spritesmaker render-batch --all        Render all curated models (sketchfab-models.json)
   spritesmaker qa <file.png>             Score a single sprite (0-100)
   spritesmaker qa --all                  Score all sprites, sort into approved/review/rejected
   spritesmaker qa --sheet                Generate contact sheet grid PNG
   spritesmaker qa --approve <ICAO>       Move sprite to approved/
   spritesmaker qa --reject <ICAO> --reason "..."  Move sprite to rejected/
+  spritesmaker deploy                    Deploy approved sprites to flight-tracker
   spritesmaker list                      Show categories and sample types
 
 Vessel types: cargo, tanker, cruise, fishing, tug, sailboat
@@ -273,14 +276,36 @@ async function handleRender(args) {
   }
 
   console.log(`[render] ${icao}`);
-  const classification = classify(icao);
+  const isVessel = icao.startsWith('VESSEL_');
+  let classification = isVessel ? { category: 'vessel' } : classify(icao);
+  let curatedName = null;
   if (!classification) {
-    console.error(`Error: Unknown ICAO code "${icao}".`);
-    process.exit(1);
+    // Allow rendering if the ICAO is in the curated Sketchfab list
+    const { readFileSync: rf } = await import('fs');
+    const curatedPath = join(resolve('./data'), 'sketchfab-models.json');
+    try {
+      const curated = JSON.parse(rf(curatedPath, 'utf8'));
+      if (curated.models?.[icao]) {
+        classification = { category: 'unknown' };
+        curatedName = curated.models[icao].name;
+        console.log(`  [render] Not in ICAO DB but found in curated list: ${curatedName}`);
+      }
+    } catch {}
+    if (!classification) {
+      console.error(`Error: Unknown ICAO code "${icao}" and not in curated list.`);
+      process.exit(1);
+    }
   }
   console.log(`  category: ${classification.category}`);
 
-  const specs = await fetchSpecs(icao);
+  let specs;
+  if (isVessel) {
+    specs = { name: icao, category: 'vessel' };
+  } else if (curatedName) {
+    specs = { name: curatedName, category: classification.category };
+  } else {
+    specs = await fetchSpecs(icao);
+  }
   console.log(`  name: ${specs.name}`);
 
   const model = await resolveModel(icao, specs);
@@ -303,34 +328,70 @@ async function handleRender(args) {
 
 async function handleRenderBatch(args) {
   const topIdx = args.indexOf('--top');
+  const allCurated = args.includes('--all');
   const force = args.includes('--force');
   const count = topIdx !== -1 ? parseInt(args[topIdx + 1], 10) || 20 : 20;
-  const types = TOP_TYPES.slice(0, count);
 
-  console.log(`[render-batch] Rendering top ${types.length} aircraft types...`);
+  let types;
+  if (allCurated) {
+    // Render everything in sketchfab-models.json
+    const curatedPath = join(resolve('./data'), 'sketchfab-models.json');
+    const curated = JSON.parse(readFileSync(curatedPath, 'utf8'));
+    types = Object.keys(curated.models);
+    console.log(`[render-batch] Rendering all ${types.length} curated models...`);
+  } else {
+    types = TOP_TYPES.slice(0, count);
+    console.log(`[render-batch] Rendering top ${types.length} types...`);
+  }
+
   ensureOutputDir();
-
   let rendered = 0, skipped = 0, failed = 0;
+  const total = types.length;
 
   for (const icao of types) {
-    const outPath = join(OUTPUT_DIR, `${icao}.png`);
-    if (!force && existsSync(outPath)) {
+    // Check all output dirs for existing render
+    const dirs = [OUTPUT_DIR, join(OUTPUT_DIR, 'approved'), join(OUTPUT_DIR, 'review'), join(OUTPUT_DIR, 'rejected')];
+    const alreadyExists = !force && dirs.some(d => existsSync(join(d, `${icao}.png`)));
+    if (alreadyExists) {
       skipped++;
       continue;
     }
 
     try {
-      const classification = classify(icao);
-      if (!classification) { failed++; continue; }
+      const isVessel = icao.startsWith('VESSEL_');
+      let classification = isVessel ? { category: 'vessel' } : classify(icao);
+      let curatedName = null;
 
-      const specs = await fetchSpecs(icao);
+      if (!classification) {
+        // Check curated list for non-ICAO types
+        const curatedPath = join(resolve('./data'), 'sketchfab-models.json');
+        try {
+          const curated = JSON.parse(readFileSync(curatedPath, 'utf8'));
+          if (curated.models?.[icao]) {
+            classification = { category: 'unknown' };
+            curatedName = curated.models[icao].name;
+          }
+        } catch {}
+        if (!classification) { failed++; continue; }
+      }
+
+      let specs;
+      if (isVessel) {
+        specs = { name: icao, category: 'vessel' };
+      } else if (curatedName) {
+        specs = { name: curatedName, category: classification.category };
+      } else {
+        specs = await fetchSpecs(icao);
+      }
+
       const model = await resolveModel(icao, specs);
-      if (!model) { failed++; continue; }
+      if (!model) { failed++; console.log(`  ✗ ${icao}: no model found`); continue; }
 
+      const outPath = join(OUTPUT_DIR, `${icao}.png`);
       const result = await render3d(model.modelPath, outPath);
       if (result.success) {
         rendered++;
-        console.log(`  ✓ ${icao} (${rendered}/${types.length - skipped})`);
+        console.log(`  ✓ ${icao} (${rendered + skipped + failed}/${total})`);
       } else {
         failed++;
         console.log(`  ✗ ${icao}: ${result.error}`);
@@ -341,7 +402,7 @@ async function handleRenderBatch(args) {
     }
   }
 
-  console.log(`\n[render-batch] Done: ${rendered} rendered, ${skipped} skipped, ${failed} failed`);
+  console.log(`\n[render-batch] Done: ${rendered} rendered, ${skipped} skipped, ${failed} failed (${total} total)`);
 }
 
 async function handleQa(args) {
@@ -428,6 +489,9 @@ export async function run(args) {
       break;
     case 'qa':
       await handleQa(args.slice(1));
+      break;
+    case 'deploy':
+      await deploy(join(OUTPUT_DIR, 'approved'));
       break;
     case 'list':
       handleList();

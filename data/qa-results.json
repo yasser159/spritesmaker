@@ -1,93 +1,1893 @@
 {
-  "B738": {
-    "score": 90,
-    "tier": "approved",
-    "checks": {
-      "coverage": {
-        "score": 10,
-        "maxScore": 20,
-        "pct": 14.5,
-        "filled": 2373,
-        "total": 16384
+  "A35K" : {
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 0
       },
-      "bboxEfficiency": {
-        "score": 15,
-        "maxScore": 15,
-        "wRatio": 0.84,
-        "hRatio": 0.8
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
       },
-      "symmetry": {
-        "score": 20,
-        "maxScore": 20,
-        "ratio": 0.98,
-        "left": 1176,
-        "right": 1197
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
       },
-      "holes": {
-        "score": 15,
-        "maxScore": 15,
-        "holePct": 0,
-        "holes": 0
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 0
       },
-      "colorVariance": {
-        "score": 15,
-        "maxScore": 15,
-        "distinctColors": 48
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
       },
-      "connectedComponents": {
-        "score": 15,
-        "maxScore": 15,
-        "total": 1,
-        "large": 1
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
       }
     },
-    "scoredAt": "2026-04-12T14:32:09.829Z"
+    "reason" : "Low quality \/ low-poly model",
+    "rejectedAt" : "2026-04-12T20:47:57Z",
+    "score" : 65,
+    "scoredAt" : "2026-04-12T18:48:48.330Z",
+    "tier" : "rejected"
   },
-  "C172": {
-    "score": 90,
-    "tier": "approved",
-    "checks": {
-      "coverage": {
-        "score": 10,
-        "maxScore": 20,
-        "pct": 14.9,
-        "filled": 2437,
-        "total": 16384
+  "A124" : {
+    "approvedAt" : "2026-04-12T20:45:42Z",
+    "tier" : "approved"
+  },
+  "A139" : {
+    "approvedAt" : "2026-04-12T20:48:11Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
       },
-      "bboxEfficiency": {
-        "score": 15,
-        "maxScore": 15,
-        "wRatio": 0.84,
-        "hRatio": 0.62
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
       },
-      "symmetry": {
-        "score": 20,
-        "maxScore": 20,
-        "ratio": 1,
-        "left": 1221,
-        "right": 1216
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
       },
-      "holes": {
-        "score": 15,
-        "maxScore": 15,
-        "holePct": 0.3,
-        "holes": 7
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 0
       },
-      "colorVariance": {
-        "score": 15,
-        "maxScore": 15,
-        "distinctColors": 141
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
       },
-      "connectedComponents": {
-        "score": 15,
-        "maxScore": 15,
-        "total": 1,
-        "large": 1
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
       }
     },
-    "scoredAt": "2026-04-12T14:32:09.836Z",
-    "reason": "tilted orientation",
-    "rejectedAt": "2026-04-12T14:32:46.251Z",
-    "approvedAt": "2026-04-12T14:32:46.322Z"
+    "score" : 80,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "approved"
+  },
+  "A319" : {
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 20
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 10
+      }
+    },
+    "reason" : "Bad orientation (tilted)",
+    "rejectedAt" : "2026-04-12T15:28:38Z",
+    "score" : 90,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "rejected"
+  },
+  "A320" : {
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 0
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 0
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "reason" : "Bad orientation (tilted)",
+    "rejectedAt" : "2026-04-12T20:48:05Z",
+    "score" : 65,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "rejected"
+  },
+  "A321" : {
+    "approvedAt" : "2026-04-12T20:48:47Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 10
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 90,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "approved"
+  },
+  "A332" : {
+    "approvedAt" : "2026-04-12T15:28:14Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 10
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 90,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "approved"
+  },
+  "A333" : {
+    "approvedAt" : "2026-04-12T15:28:15Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 10
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 90,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "approved"
+  },
+  "A340" : {
+    "approvedAt" : "2026-04-12T20:48:31Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 10
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 90,
+    "scoredAt" : "2026-04-12T18:48:48.330Z",
+    "tier" : "approved"
+  },
+  "A346" : {
+    "approvedAt" : "2026-04-12T20:44:33Z",
+    "tier" : "approved"
+  },
+  "A359" : {
+    "approvedAt" : "2026-04-12T15:28:35Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 10
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 90,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "approved"
+  },
+  "A388" : {
+    "approvedAt" : "2026-04-12T15:29:05Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 20
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 100,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "approved"
+  },
+  "A400" : {
+    "reason" : "Nose not pointing up",
+    "rejectedAt" : "2026-04-12T20:46:07Z",
+    "tier" : "rejected"
+  },
+  "AT45" : {
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 8
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 20
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "reason" : "Empty\/broken render",
+    "rejectedAt" : "2026-04-12T15:28:45Z",
+    "score" : 93,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "rejected"
+  },
+  "AT75" : {
+    "approvedAt" : "2026-04-12T15:28:16Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 10
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 90,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "approved"
+  },
+  "B1" : {
+    "reason" : "bad paint ",
+    "rejectedAt" : "2026-04-12T20:46:17Z",
+    "tier" : "rejected"
+  },
+  "B52" : {
+    "approvedAt" : "2026-04-12T20:48:33Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 10
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 90,
+    "scoredAt" : "2026-04-12T18:48:48.330Z",
+    "tier" : "approved"
+  },
+  "B77W" : {
+    "approvedAt" : "2026-04-12T20:48:44Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 10
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 90,
+    "scoredAt" : "2026-04-12T18:48:48.330Z",
+    "tier" : "approved"
+  },
+  "B78X" : {
+    "approvedAt" : "2026-04-12T20:48:43Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 10
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 90,
+    "scoredAt" : "2026-04-12T18:48:48.330Z",
+    "tier" : "approved"
+  },
+  "B206" : {
+    "reason" : "Bad orientation (tilted)",
+    "rejectedAt" : "2026-04-12T20:45:29Z",
+    "tier" : "rejected"
+  },
+  "B350" : {
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 10
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "reason" : "Bad orientation (tilted)",
+    "rejectedAt" : "2026-04-12T15:28:19Z",
+    "score" : 90,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "rejected"
+  },
+  "B407" : {
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 0
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 0
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 0
+      }
+    },
+    "reason" : "Bad orientation (tilted)",
+    "rejectedAt" : "2026-04-12T20:47:45Z",
+    "score" : 45,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "rejected"
+  },
+  "B712" : {
+    "reason" : "bad paint",
+    "rejectedAt" : "2026-04-12T20:45:02Z",
+    "tier" : "rejected"
+  },
+  "B737" : {
+    "approvedAt" : "2026-04-12T15:29:05Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 20
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 100,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "approved"
+  },
+  "B738" : {
+    "approvedAt" : "2026-04-12T20:48:36Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 10
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 90,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "approved"
+  },
+  "B739" : {
+    "approvedAt" : "2026-04-12T20:48:37Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 10
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 90,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "approved"
+  },
+  "B744" : {
+    "approvedAt" : "2026-04-12T15:28:58Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 20
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 100,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "approved"
+  },
+  "B748" : {
+    "approvedAt" : "2026-04-12T20:48:46Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 10
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 90,
+    "scoredAt" : "2026-04-12T18:48:48.330Z",
+    "tier" : "approved"
+  },
+  "B752" : {
+    "approvedAt" : "2026-04-12T15:28:20Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 10
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 90,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "approved"
+  },
+  "B763" : {
+    "approvedAt" : "2026-04-12T20:48:45Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 10
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 90,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "approved"
+  },
+  "B772" : {
+    "approvedAt" : "2026-04-12T15:28:55Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 20
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 100,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "approved"
+  },
+  "B773" : {
+    "approvedAt" : "2026-04-12T15:28:41Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 10
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "rejectedAt" : "2026-04-12T15:06:04Z",
+    "score" : 90,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "approved"
+  },
+  "B788" : {
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 0
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "reason" : "Low quality \/ low-poly model",
+    "rejectedAt" : "2026-04-12T20:48:18Z",
+    "score" : 80,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "rejected"
+  },
+  "B789" : {
+    "approvedAt" : "2026-04-12T20:48:43Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 10
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 90,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "approved"
+  },
+  "BE20" : {
+    "reason" : "Nose not pointing up",
+    "rejectedAt" : "2026-04-12T20:45:40Z",
+    "tier" : "rejected"
+  },
+  "BE36" : {
+    "approvedAt" : "2026-04-12T20:45:44Z",
+    "tier" : "approved"
+  },
+  "C17" : {
+    "approvedAt" : "2026-04-12T15:29:06Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 20
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "reason" : "Bad orientation (tilted)",
+    "rejectedAt" : "2026-04-12T15:29:25Z",
+    "score" : 100,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "rejected"
+  },
+  "C56X" : {
+    "approvedAt" : "2026-04-12T20:48:35Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 10
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 90,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "approved"
+  },
+  "C130" : {
+    "approvedAt" : "2026-04-12T20:48:42Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 10
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 90,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "approved"
+  },
+  "C172" : {
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 10
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "reason" : "Upside down (belly showing)",
+    "rejectedAt" : "2026-04-12T15:28:32Z",
+    "score" : 90,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "rejected"
+  },
+  "C182" : {
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 20
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "reason" : "Bad orientation (tilted)",
+    "rejectedAt" : "2026-04-12T15:28:53Z",
+    "score" : 100,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "rejected"
+  },
+  "C208" : {
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 10
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "reason" : "Bad orientation (tilted)",
+    "rejectedAt" : "2026-04-12T15:28:05Z",
+    "score" : 90,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "rejected"
+  },
+  "C680" : {
+    "approvedAt" : "2026-04-12T15:28:54Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 20
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 100,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "approved"
+  },
+  "CL60" : {
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 20
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 100,
+    "scoredAt" : "2026-04-12T18:48:48.330Z",
+    "tier" : "approved"
+  },
+  "CRJ7" : {
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 20
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "reason" : "Two aircraft in scene",
+    "rejectedAt" : "2026-04-12T15:29:02Z",
+    "score" : 100,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "rejected"
+  },
+  "CRJ9" : {
+    "approvedAt" : "2026-04-12T20:48:22Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 8
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 10
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 83,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "approved"
+  },
+  "DH8D" : {
+    "approvedAt" : "2026-04-12T20:46:00Z",
+    "tier" : "approved"
+  },
+  "DHC6" : {
+    "approvedAt" : "2026-04-12T15:28:50Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 8
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 20
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 93,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "approved"
+  },
+  "E145" : {
+    "approvedAt" : "2026-04-12T20:48:25Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 8
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 10
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 83,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "approved"
+  },
+  "EC35" : {
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 0
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 0
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 0
+      }
+    },
+    "reason" : "Empty\/broken render",
+    "rejectedAt" : "2026-04-12T20:47:49Z",
+    "score" : 45,
+    "scoredAt" : "2026-04-12T18:48:48.324Z",
+    "tier" : "rejected"
+  },
+  "F15" : {
+    "approvedAt" : "2026-04-12T20:45:53Z",
+    "tier" : "approved"
+  },
+  "F16" : {
+    "approvedAt" : "2026-04-12T15:28:47Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 8
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 20
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 93,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "approved"
+  },
+  "F18S" : {
+    "approvedAt" : "2026-04-12T15:29:04Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 20
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 100,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "approved"
+  },
+  "F22" : {
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 20
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 100,
+    "scoredAt" : "2026-04-12T18:48:48.330Z",
+    "tier" : "approved"
+  },
+  "F35" : {
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 20
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 100,
+    "scoredAt" : "2026-04-12T18:48:48.330Z",
+    "tier" : "approved"
+  },
+  "FA50" : {
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 20
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 100,
+    "scoredAt" : "2026-04-12T18:48:48.330Z",
+    "tier" : "approved"
+  },
+  "G280" : {
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 20
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 100,
+    "scoredAt" : "2026-04-12T18:48:48.330Z",
+    "tier" : "approved"
+  },
+  "GLF5" : {
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 20
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 0
+      }
+    },
+    "reason" : "Nose not pointing up",
+    "rejectedAt" : "2026-04-12T20:48:21Z",
+    "score" : 80,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "rejected"
+  },
+  "H25B" : {
+    "approvedAt" : "2026-04-12T20:45:54Z",
+    "tier" : "approved"
+  },
+  "H60" : {
+    "reason" : "Upside down (belly showing)",
+    "rejectedAt" : "2026-04-12T20:45:17Z",
+    "tier" : "rejected"
+  },
+  "KC10" : {
+    "approvedAt" : "2026-04-12T20:45:33Z",
+    "tier" : "approved"
+  },
+  "LJ45" : {
+    "approvedAt" : "2026-04-12T15:28:56Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 20
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 100,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "approved"
+  },
+  "MD80" : {
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 0
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 0
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 0
+      }
+    },
+    "reason" : "Bad orientation (tilted)",
+    "rejectedAt" : "2026-04-12T20:47:52Z",
+    "score" : 45,
+    "scoredAt" : "2026-04-12T18:48:48.330Z",
+    "tier" : "rejected"
+  },
+  "MD90" : {
+    "approvedAt" : "2026-04-12T20:46:03Z",
+    "tier" : "approved"
+  },
+  "PA28" : {
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 20
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 10
+      }
+    },
+    "score" : 90,
+    "scoredAt" : "2026-04-12T18:48:48.330Z",
+    "tier" : "approved"
+  },
+  "PC12" : {
+    "approvedAt" : "2026-04-12T15:28:34Z",
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 10
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 90,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "approved"
+  },
+  "Q400" : {
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 10
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "score" : 90,
+    "scoredAt" : "2026-04-12T18:48:48.330Z",
+    "tier" : "approved"
+  },
+  "R44" : {
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 0
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 0
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "reason" : "Bad orientation (tilted)",
+    "rejectedAt" : "2026-04-12T20:48:07Z",
+    "score" : 65,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "rejected"
+  },
+  "SF34" : {
+    "approvedAt" : "2026-04-12T20:46:02Z",
+    "tier" : "approved"
+  },
+  "SR22" : {
+    "checks" : {
+      "bboxEfficiency" : {
+        "maxScore" : 15,
+        "score" : 8
+      },
+      "colorVariance" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "connectedComponents" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "coverage" : {
+        "maxScore" : 20,
+        "score" : 10
+      },
+      "holes" : {
+        "maxScore" : 15,
+        "score" : 15
+      },
+      "symmetry" : {
+        "maxScore" : 20,
+        "score" : 20
+      }
+    },
+    "reason" : "Nose not pointing up",
+    "rejectedAt" : "2026-04-12T20:48:29Z",
+    "score" : 83,
+    "scoredAt" : "2026-04-12T14:54:45.127Z",
+    "tier" : "rejected"
+  },
+  "TBM9" : {
+    "reason" : "Upside down (belly showing)",
+    "rejectedAt" : "2026-04-12T20:45:51Z",
+    "tier" : "rejected"
+  },
+  "VESSEL_CARGO" : {
+    "reason" : "Empty\/broken render",
+    "rejectedAt" : "2026-04-12T20:47:39Z",
+    "tier" : "rejected"
+  },
+  "VESSEL_CRUISE" : {
+    "reason" : "Nose not pointing up",
+    "rejectedAt" : "2026-04-12T20:47:15Z",
+    "tier" : "rejected"
+  },
+  "VESSEL_DESTROYER" : {
+    "reason" : "Bad orientation (tilted)",
+    "rejectedAt" : "2026-04-12T20:47:35Z",
+    "tier" : "rejected"
+  },
+  "VESSEL_FERRY" : {
+    "approvedAt" : "2026-04-12T20:46:28Z",
+    "tier" : "approved"
+  },
+  "VESSEL_FISHING" : {
+    "approvedAt" : "2026-04-12T20:46:55Z",
+    "tier" : "approved"
+  },
+  "VESSEL_PATROL" : {
+    "reason" : "Nose not pointing up",
+    "rejectedAt" : "2026-04-12T20:47:19Z",
+    "tier" : "rejected"
+  },
+  "VESSEL_PT" : {
+    "approvedAt" : "2026-04-12T20:46:54Z",
+    "tier" : "approved"
+  },
+  "VESSEL_TANKER" : {
+    "approvedAt" : "2026-04-12T18:23:40Z",
+    "reason" : "bad rendering",
+    "rejectedAt" : "2026-04-12T20:46:50Z",
+    "tier" : "rejected"
+  },
+  "VESSEL_TUG" : {
+    "approvedAt" : "2026-04-12T20:47:12Z",
+    "rejectedAt" : "2026-04-12T18:22:40Z",
+    "tier" : "approved"
+  },
+  "VESSEL_YACHT" : {
+    "reason" : "Bad orientation (tilted)",
+    "rejectedAt" : "2026-04-12T20:47:42Z",
+    "tier" : "rejected"
   }
 }
