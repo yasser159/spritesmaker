@@ -1,3 +1,6 @@
 node_modules/
 output/
+models/
 data/specs-cache.json
+data/sketchfab-search-cache.json
+.DS_Store

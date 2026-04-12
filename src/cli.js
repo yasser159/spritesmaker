@@ -4,6 +4,8 @@ import { classify, classifyAll, getAllCodesForCategory } from './classify.js';
 import { fetchSpecs } from './fetch-specs.js';
 import { render } from './render.js';
 import { validate } from './validate.js';
+import { resolveModel } from './model-resolver.js';
+import { render3d } from './render-3d.js';
 
 const OUTPUT_DIR = resolve('./output');
 
@@ -24,6 +26,8 @@ Usage:
   spritesmaker batch --category <cat>    Render all ICAO types in category
   spritesmaker batch --missing --flight-tracker <path>
                                          Find types without sprites and generate them
+  spritesmaker render <ICAO>             Download 3D model + Blender render (best quality)
+  spritesmaker render-batch --top <N>    Render top N most common types via Blender
   spritesmaker list                      Show categories and sample types
 
 Vessel types: cargo, tanker, cruise, fishing, tug, sailboat
@@ -245,6 +249,94 @@ function handleList() {
   console.log(`\nTotal: ${allCodes.size} ICAO types`);
 }
 
+// Top aircraft types by global traffic volume
+const TOP_TYPES = [
+  'B738', 'A320', 'A321', 'B737', 'A319', 'B739', 'B77W', 'A332', 'B788', 'B789',
+  'A388', 'B744', 'B772', 'B773', 'A333', 'A359', 'A346', 'E190', 'E75L', 'CRJ9',
+  'CRJ7', 'E170', 'E145', 'B752', 'B763', 'AT75', 'AT45', 'Q400', 'C172', 'C182',
+  'C208', 'PA28', 'PC12', 'BE20', 'GLF5', 'C56X', 'C680', 'LJ45', 'EC35', 'B407',
+  'A139', 'B06', 'R44', 'F16', 'F18S', 'C17', 'C130', 'B350', 'DHC6', 'SR22',
+];
+
+async function handleRender(args) {
+  const icao = args[0]?.toUpperCase();
+  if (!icao) {
+    console.error('Error: ICAO code required. Example: spritesmaker render B738');
+    process.exit(1);
+  }
+
+  console.log(`[render] ${icao}`);
+  const classification = classify(icao);
+  if (!classification) {
+    console.error(`Error: Unknown ICAO code "${icao}".`);
+    process.exit(1);
+  }
+  console.log(`  category: ${classification.category}`);
+
+  const specs = await fetchSpecs(icao);
+  console.log(`  name: ${specs.name}`);
+
+  const model = await resolveModel(icao, specs);
+  if (!model) {
+    console.error(`  No 3D model found for ${icao}. Try 'aircraft' command for SVG fallback.`);
+    process.exit(1);
+  }
+
+  ensureOutputDir();
+  const outPath = join(OUTPUT_DIR, `${icao}.png`);
+  const result = await render3d(model.modelPath, outPath);
+
+  if (result.success) {
+    console.log(`\n✓ ${icao} → ${outPath} (source: ${model.source})`);
+  } else {
+    console.error(`\n✗ ${icao} render failed: ${result.error}`);
+    process.exit(1);
+  }
+}
+
+async function handleRenderBatch(args) {
+  const topIdx = args.indexOf('--top');
+  const force = args.includes('--force');
+  const count = topIdx !== -1 ? parseInt(args[topIdx + 1], 10) || 20 : 20;
+  const types = TOP_TYPES.slice(0, count);
+
+  console.log(`[render-batch] Rendering top ${types.length} aircraft types...`);
+  ensureOutputDir();
+
+  let rendered = 0, skipped = 0, failed = 0;
+
+  for (const icao of types) {
+    const outPath = join(OUTPUT_DIR, `${icao}.png`);
+    if (!force && existsSync(outPath)) {
+      skipped++;
+      continue;
+    }
+
+    try {
+      const classification = classify(icao);
+      if (!classification) { failed++; continue; }
+
+      const specs = await fetchSpecs(icao);
+      const model = await resolveModel(icao, specs);
+      if (!model) { failed++; continue; }
+
+      const result = await render3d(model.modelPath, outPath);
+      if (result.success) {
+        rendered++;
+        console.log(`  ✓ ${icao} (${rendered}/${types.length - skipped})`);
+      } else {
+        failed++;
+        console.log(`  ✗ ${icao}: ${result.error}`);
+      }
+    } catch (e) {
+      failed++;
+      console.log(`  ✗ ${icao}: ${e.message}`);
+    }
+  }
+
+  console.log(`\n[render-batch] Done: ${rendered} rendered, ${skipped} skipped, ${failed} failed`);
+}
+
 export async function run(args) {
   const command = args[0];
 
@@ -257,6 +349,12 @@ export async function run(args) {
       break;
     case 'batch':
       await handleBatch(args.slice(1));
+      break;
+    case 'render':
+      await handleRender(args.slice(1));
+      break;
+    case 'render-batch':
+      await handleRenderBatch(args.slice(1));
       break;
     case 'list':
       handleList();
