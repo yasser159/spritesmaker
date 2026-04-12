@@ -362,34 +362,44 @@ def align_model_for_topdown(imported, mesh_objects):
 
     print(f"  [orient] symmetry: X-axis={x_sym:.2f} Y-axis={y_sym:.2f}")
 
-    # Dorsal/belly check: camera looks down -Z, so +Z side faces camera.
-    # The dorsal (top) side of an aircraft has MORE vertex detail (cockpit, windows,
-    # wing upper surface, antennas) than the smooth belly (fewer vertices).
-    # If belly is facing +Z (toward camera), flip 180° around X to show dorsal side.
-    mid_z = nb["cz"]
-    plus_z_count = sum(1 for v in verts if v[2] > mid_z)
-    minus_z_count = sum(1 for v in verts if v[2] <= mid_z)
-    # Also check vertex density in the top 20% vs bottom 20% of Z range
-    z_range = nb["max_z"] - nb["min_z"]
-    top_20 = sum(1 for v in verts if v[2] > nb["max_z"] - z_range * 0.2)
-    bot_20 = sum(1 for v in verts if v[2] < nb["min_z"] + z_range * 0.2)
-    print(f"  [orient] Z-split: +Z={plus_z_count} -Z={minus_z_count} (top20%={top_20} bot20%={bot_20})")
+    # Dorsal/belly detection using FACE COUNT distribution.
+    # Aircraft bellies have WAY more faces (landing gear, flap tracks, pylons, intake details)
+    # than the smooth dorsal surface (wing top, fuselage top).
+    # The Z-half with FEWER faces = dorsal (top). More faces = belly (bottom).
+    # Camera looks down -Z, so dorsal must be at +Z.
+    all_face_z = []
+    for obj in mesh_objects:
+        for poly in obj.data.polygons:
+            wc = obj.matrix_world @ poly.center
+            all_face_z.append(wc.z)
 
-    # The side with MORE detail (vertices) is the dorsal side and should face +Z (camera)
-    # If -Z has more detail, flip around X axis
-    dorsal_is_plus_z = plus_z_count >= minus_z_count
-    if not dorsal_is_plus_z:
-        print(f"  [orient] belly facing camera — flipping around X to show dorsal side")
-        flip_x = (
-            mathutils.Matrix.Translation((nb["cx"], nb["cy"], nb["cz"]))
-            @ mathutils.Matrix.Rotation(math.radians(180), 4, "X")
-            @ mathutils.Matrix.Translation((-nb["cx"], -nb["cy"], -nb["cz"]))
-        )
-        for obj in imported:
-            obj.matrix_world = flip_x @ obj.matrix_world
-        bpy.context.view_layer.update()
-        verts = collect_world_vertices(mesh_objects)
-        nb = compute_3d_bounds(verts)
+    if all_face_z:
+        face_mid_z = (min(all_face_z) + max(all_face_z)) / 2
+        faces_above = sum(1 for z in all_face_z if z > face_mid_z)
+        faces_below = sum(1 for z in all_face_z if z <= face_mid_z)
+        print(f"  [orient] face count: +Z={faces_above} -Z={faces_below}")
+
+        # Fewer faces above = dorsal is at +Z (correct, camera sees top)
+        # Fewer faces below = dorsal is at -Z (wrong, need to flip)
+        if faces_below < faces_above * 0.8:
+            # More faces above than below — dorsal is at -Z, belly at +Z → flip
+            print(f"  [orient] belly facing camera (more faces above) — flipping around X")
+            flip_x = (
+                mathutils.Matrix.Translation((nb["cx"], nb["cy"], nb["cz"]))
+                @ mathutils.Matrix.Rotation(math.radians(180), 4, "X")
+                @ mathutils.Matrix.Translation((-nb["cx"], -nb["cy"], -nb["cz"]))
+            )
+            for obj in imported:
+                obj.matrix_world = flip_x @ obj.matrix_world
+            bpy.context.view_layer.update()
+            verts = collect_world_vertices(mesh_objects)
+            nb = compute_3d_bounds(verts)
+        elif faces_above < faces_below * 0.8:
+            # More faces below — dorsal is at +Z (correct, no flip needed)
+            print(f"  [orient] dorsal facing camera (fewer faces above) — OK")
+        else:
+            # Too close to call — skip
+            print(f"  [orient] face distribution ambiguous — skipping dorsal/belly flip")
 
     # Wings should be along X (high X-symmetry = left-right mirror = wings along X ✓)
     # If Y-symmetry > X-symmetry, wings are along Y → need 90° rotation
