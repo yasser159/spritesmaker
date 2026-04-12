@@ -1,0 +1,93 @@
+{
+  "B738": {
+    "score": 90,
+    "tier": "approved",
+    "checks": {
+      "coverage": {
+        "score": 10,
+        "maxScore": 20,
+        "pct": 14.5,
+        "filled": 2373,
+        "total": 16384
+      },
+      "bboxEfficiency": {
+        "score": 15,
+        "maxScore": 15,
+        "wRatio": 0.84,
+        "hRatio": 0.8
+      },
+      "symmetry": {
+        "score": 20,
+        "maxScore": 20,
+        "ratio": 0.98,
+        "left": 1176,
+        "right": 1197
+      },
+      "holes": {
+        "score": 15,
+        "maxScore": 15,
+        "holePct": 0,
+        "holes": 0
+      },
+      "colorVariance": {
+        "score": 15,
+        "maxScore": 15,
+        "distinctColors": 48
+      },
+      "connectedComponents": {
+        "score": 15,
+        "maxScore": 15,
+        "total": 1,
+        "large": 1
+      }
+    },
+    "scoredAt": "2026-04-12T14:32:09.829Z"
+  },
+  "C172": {
+    "score": 90,
+    "tier": "approved",
+    "checks": {
+      "coverage": {
+        "score": 10,
+        "maxScore": 20,
+        "pct": 14.9,
+        "filled": 2437,
+        "total": 16384
+      },
+      "bboxEfficiency": {
+        "score": 15,
+        "maxScore": 15,
+        "wRatio": 0.84,
+        "hRatio": 0.62
+      },
+      "symmetry": {
+        "score": 20,
+        "maxScore": 20,
+        "ratio": 1,
+        "left": 1221,
+        "right": 1216
+      },
+      "holes": {
+        "score": 15,
+        "maxScore": 15,
+        "holePct": 0.3,
+        "holes": 7
+      },
+      "colorVariance": {
+        "score": 15,
+        "maxScore": 15,
+        "distinctColors": 141
+      },
+      "connectedComponents": {
+        "score": 15,
+        "maxScore": 15,
+        "total": 1,
+        "large": 1
+      }
+    },
+    "scoredAt": "2026-04-12T14:32:09.836Z",
+    "reason": "tilted orientation",
+    "rejectedAt": "2026-04-12T14:32:46.251Z",
+    "approvedAt": "2026-04-12T14:32:46.322Z"
+  }
+}

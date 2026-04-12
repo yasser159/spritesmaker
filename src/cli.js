@@ -6,6 +6,8 @@ import { render } from './render.js';
 import { validate } from './validate.js';
 import { resolveModel } from './model-resolver.js';
 import { render3d } from './render-3d.js';
+import { scoreSprite, scoreAll, approve, reject } from './qa.js';
+import { generateContactSheet } from './contact-sheet.js';
 
 const OUTPUT_DIR = resolve('./output');
 
@@ -28,6 +30,11 @@ Usage:
                                          Find types without sprites and generate them
   spritesmaker render <ICAO>             Download 3D model + Blender render (best quality)
   spritesmaker render-batch --top <N>    Render top N most common types via Blender
+  spritesmaker qa <file.png>             Score a single sprite (0-100)
+  spritesmaker qa --all                  Score all sprites, sort into approved/review/rejected
+  spritesmaker qa --sheet                Generate contact sheet grid PNG
+  spritesmaker qa --approve <ICAO>       Move sprite to approved/
+  spritesmaker qa --reject <ICAO> --reason "..."  Move sprite to rejected/
   spritesmaker list                      Show categories and sample types
 
 Vessel types: cargo, tanker, cruise, fishing, tug, sailboat
@@ -337,6 +344,69 @@ async function handleRenderBatch(args) {
   console.log(`\n[render-batch] Done: ${rendered} rendered, ${skipped} skipped, ${failed} failed`);
 }
 
+async function handleQa(args) {
+  const allFlag = args.includes('--all');
+  const sheetFlag = args.includes('--sheet');
+  const approveIdx = args.indexOf('--approve');
+  const rejectIdx = args.indexOf('--reject');
+
+  if (approveIdx !== -1) {
+    const icao = args[approveIdx + 1];
+    if (!icao) { console.error('Error: --approve requires an ICAO code'); process.exit(1); }
+    approve(icao, OUTPUT_DIR);
+    return;
+  }
+
+  if (rejectIdx !== -1) {
+    const icao = args[rejectIdx + 1];
+    const reasonIdx = args.indexOf('--reason');
+    const reason = reasonIdx !== -1 ? args[reasonIdx + 1] : 'manual rejection';
+    if (!icao) { console.error('Error: --reject requires an ICAO code'); process.exit(1); }
+    reject(icao, reason, OUTPUT_DIR);
+    return;
+  }
+
+  if (sheetFlag) {
+    const path = await generateContactSheet(OUTPUT_DIR);
+    if (path) {
+      const { execSync } = await import('child_process');
+      try { execSync(`open "${path}"`); } catch {}
+    }
+    return;
+  }
+
+  if (allFlag) {
+    console.log(`[qa] Scoring all sprites in ${OUTPUT_DIR}...`);
+    const { results, summary } = await scoreAll(OUTPUT_DIR);
+    console.log(`\n[qa] Results:`);
+    for (const r of results) {
+      const icon = r.tier === 'approved' ? '✓' : r.tier === 'review' ? '?' : '✗';
+      console.log(`  ${icon} ${r.icao.padEnd(6)} ${String(r.score).padStart(3)}/100  ${r.tier}`);
+    }
+    console.log(`\n[qa] Summary: ${summary.approved} approved, ${summary.review} review, ${summary.rejected} rejected (${summary.total} total)`);
+    return;
+  }
+
+  // Single file scoring
+  const file = args[0];
+  if (!file) {
+    console.error('Error: provide a PNG path or use --all, --sheet, --approve, --reject');
+    process.exit(1);
+  }
+
+  if (!existsSync(file)) {
+    console.error(`Error: file not found: ${file}`);
+    process.exit(1);
+  }
+
+  const result = await scoreSprite(file);
+  const icon = result.tier === 'approved' ? '✓' : result.tier === 'review' ? '?' : '✗';
+  console.log(`\n${icon} ${result.icao}  ${result.score}/100  [${result.tier}]\n`);
+  for (const [name, check] of Object.entries(result.checks)) {
+    console.log(`  ${name.padEnd(22)} ${String(check.score).padStart(2)}/${check.maxScore}  ${JSON.stringify(check)}`);
+  }
+}
+
 export async function run(args) {
   const command = args[0];
 
@@ -355,6 +425,9 @@ export async function run(args) {
       break;
     case 'render-batch':
       await handleRenderBatch(args.slice(1));
+      break;
+    case 'qa':
+      await handleQa(args.slice(1));
       break;
     case 'list':
       handleList();
